@@ -3,6 +3,7 @@
 package com.example.ariamalkani.homecooked;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -70,8 +71,14 @@ public class BrowseFragment extends Fragment {
     private void addMeals() {
         Meal m1 = new Meal("Shady Bob's BBQ", true, false,
                 "3.1/5", "Avg. $7", R.drawable.bbq);
+        Meal m2 = new Meal("John's Vegan Heaven", true, true,
+                "4.7/5", "Avg. $20", R.drawable.vegan_steak);
+        Meal m3 = new Meal("Burger Prince", false, false,
+                "4.7/5", "Avg. $10", R.drawable.burger);
 
         mealList.add(m1);
+        mealList.add(m2);
+        mealList.add(m3);
     }
 
     class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> {
@@ -113,6 +120,9 @@ public class BrowseFragment extends Fragment {
             holder.chefName.setText(meal.getChefName());
             if (meal.getVerified()) {
                 holder.verified.setText("Verified");
+            } else {
+                holder.verified.setText("Unverified");
+                holder.verified.setTextColor(Color.BLACK);
             }
             if (meal.getVegan()) {
                 holder.vegan.setText("Vegan");
